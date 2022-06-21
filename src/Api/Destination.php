@@ -5,6 +5,7 @@ namespace Ebay\Commerce\Notification\Api;
 use Ebay\Commerce\Notification\Model\Destination as DestinationModel;
 use Ebay\Commerce\Notification\Model\DestinationRequest;
 use Ebay\Commerce\Notification\Model\DestinationSearchResponse;
+use OpenAPI\Runtime\UnexpectedResponse;
 
 class Destination extends AbstractAPI
 {
@@ -20,9 +21,9 @@ class Destination extends AbstractAPI
      *                       used.<br/><br/><b>Default:</b> 20<br/><br/><b>Maximum:</b> 100 items per page
      *                       'continuation_token'	string	The continuation token for the next set of results.
      *
-     * @return DestinationSearchResponse
+     * @return DestinationSearchResponse|UnexpectedResponse
      */
-    public function gets(array $queries = []): DestinationSearchResponse
+    public function gets(array $queries = [])
     {
         return $this->request(
         'getDestinations',
@@ -49,9 +50,9 @@ class Destination extends AbstractAPI
      *
      * @param DestinationRequest $Model the create destination request
      *
-     * @return object
+     * @return object|UnexpectedResponse
      */
-    public function create(DestinationRequest $Model): object
+    public function create(DestinationRequest $Model)
     {
         return $this->request(
         'createDestination',
@@ -70,9 +71,9 @@ class Destination extends AbstractAPI
      *
      * @param string $destination_id the unique identifier for the destination
      *
-     * @return DestinationModel
+     * @return DestinationModel|UnexpectedResponse
      */
-    public function get(string $destination_id): DestinationModel
+    public function get(string $destination_id)
     {
         return $this->request(
         'getDestination',
@@ -95,9 +96,9 @@ class Destination extends AbstractAPI
      * @param string             $destination_id the unique identifier for the destination
      * @param DestinationRequest $Model          the create subscription request
      *
-     * @return mixed
+     * @return UnexpectedResponse
      */
-    public function update(string $destination_id, DestinationRequest $Model): mixed
+    public function update(string $destination_id, DestinationRequest $Model): UnexpectedResponse
     {
         return $this->request(
         'updateDestination',
@@ -117,9 +118,9 @@ class Destination extends AbstractAPI
      *
      * @param string $destination_id the unique identifier for the destination
      *
-     * @return mixed
+     * @return UnexpectedResponse
      */
-    public function delete(string $destination_id): mixed
+    public function delete(string $destination_id): UnexpectedResponse
     {
         return $this->request(
         'deleteDestination',

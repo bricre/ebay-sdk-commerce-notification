@@ -4,6 +4,7 @@ namespace Ebay\Commerce\Notification\Api;
 
 use Ebay\Commerce\Notification\Model\Topic as TopicModel;
 use Ebay\Commerce\Notification\Model\TopicSearchResponse;
+use OpenAPI\Runtime\UnexpectedResponse;
 
 class Topic extends AbstractAPI
 {
@@ -23,9 +24,9 @@ class Topic extends AbstractAPI
      *
      * @param string $topic_id the ID of the topic for which to retrieve the details
      *
-     * @return TopicModel
+     * @return TopicModel|UnexpectedResponse
      */
-    public function get(string $topic_id): TopicModel
+    public function get(string $topic_id)
     {
         return $this->request(
         'getTopic',
@@ -55,9 +56,9 @@ class Topic extends AbstractAPI
      *                       used.<br/><br/><b> Default:</b> 20<br /><br /><b>Maximum:</b> 100 items per page
      *                       'continuation_token'	string	The token used to access the next set of results.
      *
-     * @return TopicSearchResponse
+     * @return TopicSearchResponse|UnexpectedResponse
      */
-    public function gets(array $queries = []): TopicSearchResponse
+    public function gets(array $queries = [])
     {
         return $this->request(
         'getTopics',

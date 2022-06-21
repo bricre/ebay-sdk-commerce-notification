@@ -3,15 +3,16 @@
 namespace Ebay\Commerce\Notification\Api;
 
 use Ebay\Commerce\Notification\Model\Config as ConfigModel;
+use OpenAPI\Runtime\UnexpectedResponse;
 
 class Config extends AbstractAPI
 {
     /**
      * This method allows applications to retrieve a previously created configuration.
      *
-     * @return ConfigModel
+     * @return ConfigModel|UnexpectedResponse
      */
-    public function get(): ConfigModel
+    public function get()
     {
         return $this->request(
         'getConfig',
@@ -30,9 +31,9 @@ class Config extends AbstractAPI
      *
      * @param ConfigModel $Model the configurations for this application
      *
-     * @return mixed
+     * @return UnexpectedResponse
      */
-    public function update(ConfigModel $Model): mixed
+    public function update(ConfigModel $Model): UnexpectedResponse
     {
         return $this->request(
         'updateConfig',

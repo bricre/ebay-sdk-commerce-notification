@@ -3,6 +3,7 @@
 namespace Ebay\Commerce\Notification\Api;
 
 use Ebay\Commerce\Notification\Model\PublicKey;
+use OpenAPI\Runtime\UnexpectedResponse;
 
 class Key extends AbstractAPI
 {
@@ -22,9 +23,9 @@ class Key extends AbstractAPI
      *                              from the <b>X-EBAY-SIGNATURE</b> header that is included with the push
      *                              notification.</span>
      *
-     * @return PublicKey
+     * @return PublicKey|UnexpectedResponse
      */
-    public function get(string $public_key_id): PublicKey
+    public function get(string $public_key_id)
     {
         return $this->request(
         'getPublicKey',

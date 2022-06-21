@@ -6,6 +6,7 @@ use Ebay\Commerce\Notification\Model\CreateSubscriptionRequest;
 use Ebay\Commerce\Notification\Model\Subscription as SubscriptionModel;
 use Ebay\Commerce\Notification\Model\SubscriptionSearchResponse;
 use Ebay\Commerce\Notification\Model\UpdateSubscriptionRequest;
+use OpenAPI\Runtime\UnexpectedResponse;
 
 class Subscription extends AbstractAPI
 {
@@ -21,9 +22,9 @@ class Subscription extends AbstractAPI
      *                       used.<br/><br/><b>Default:</b> 20<br/><br/><b>Maximum:</b> 100 items per page
      *                       'continuation_token'	string	The continuation token for the next set of results.
      *
-     * @return SubscriptionSearchResponse
+     * @return SubscriptionSearchResponse|UnexpectedResponse
      */
-    public function gets(array $queries = []): SubscriptionSearchResponse
+    public function gets(array $queries = [])
     {
         return $this->request(
         'getSubscriptions',
@@ -50,9 +51,9 @@ class Subscription extends AbstractAPI
      *
      * @param CreateSubscriptionRequest $Model the create subscription request
      *
-     * @return object
+     * @return object|UnexpectedResponse
      */
-    public function create(CreateSubscriptionRequest $Model): object
+    public function create(CreateSubscriptionRequest $Model)
     {
         return $this->request(
         'createSubscription',
@@ -75,9 +76,9 @@ class Subscription extends AbstractAPI
      *
      * @param string $subscription_id the unique identifier for the subscription
      *
-     * @return SubscriptionModel
+     * @return SubscriptionModel|UnexpectedResponse
      */
-    public function get(string $subscription_id): SubscriptionModel
+    public function get(string $subscription_id)
     {
         return $this->request(
         'getSubscription',
@@ -101,9 +102,9 @@ class Subscription extends AbstractAPI
      * @param string                    $subscription_id the unique identifier for the subscription
      * @param UpdateSubscriptionRequest $Model           the create subscription request
      *
-     * @return mixed
+     * @return UnexpectedResponse
      */
-    public function update(string $subscription_id, UpdateSubscriptionRequest $Model): mixed
+    public function update(string $subscription_id, UpdateSubscriptionRequest $Model): UnexpectedResponse
     {
         return $this->request(
         'updateSubscription',
@@ -121,9 +122,9 @@ class Subscription extends AbstractAPI
      *
      * @param string $subscription_id the unique identifier for the subscription
      *
-     * @return mixed
+     * @return UnexpectedResponse
      */
-    public function delete(string $subscription_id): mixed
+    public function delete(string $subscription_id): UnexpectedResponse
     {
         return $this->request(
         'deleteSubscription',
@@ -141,9 +142,9 @@ class Subscription extends AbstractAPI
      *
      * @param string $subscription_id the unique identifier for the subscription
      *
-     * @return mixed
+     * @return UnexpectedResponse
      */
-    public function enable(string $subscription_id): mixed
+    public function enable(string $subscription_id): UnexpectedResponse
     {
         return $this->request(
         'enableSubscription',
@@ -162,9 +163,9 @@ class Subscription extends AbstractAPI
      *
      * @param string $subscription_id the unique identifier for the subscription
      *
-     * @return mixed
+     * @return UnexpectedResponse
      */
-    public function disable(string $subscription_id): mixed
+    public function disable(string $subscription_id): UnexpectedResponse
     {
         return $this->request(
         'disableSubscription',
@@ -187,9 +188,9 @@ class Subscription extends AbstractAPI
      *
      * @param string $subscription_id the unique identifier for the subscription
      *
-     * @return mixed
+     * @return UnexpectedResponse
      */
-    public function test(string $subscription_id): mixed
+    public function test(string $subscription_id): UnexpectedResponse
     {
         return $this->request(
         'test',
